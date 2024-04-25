@@ -22,12 +22,17 @@ def main():
     
     df = pd.read_csv(settings['data_path']+filename+'.csv')
     df = df[(df.x > xmin) & (df.x < xmax)]
-    
     plt.plot(df['x'], df['y'], 'r,')
     plt.grid(True)
     plt.title("Pi Plot")
     plt.xlabel("Value")
     plt.ylabel("Approximation Accuracy")
+    plt.minorticks_on()
+    # plt.ion()
+    if settings['log_y']:
+        plt.yscale('log')
+    
+    
     plt.savefig(fp+filename+'.png')
     print('Plot saved\n')
     print('Range: ', f'[{xmin}, {xmax}]')
