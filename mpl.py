@@ -18,9 +18,12 @@ filename = settings['plot_name']
 
 def main():
     xmin, xmax = settings['xmin'], settings['xmax']
-    xmin*=2 if 'negative' in settings['filter'] else xmin
+    # xmax/=2 if 'negative' in settings['filter'] else xmin
     
-    df = pd.read_csv(settings['data_path']+filename+'.csv')
+    print('Reading csv...')
+    df = pd.read_csv(settings['path']+'data\\' +settings['data_name']+'.csv')
+    print('Read complete')
+    print('Filter beginning...')
     df = df[(df.x > xmin) & (df.x < xmax)]
     plt.plot(df['x'], df['y'], 'r,')
     plt.grid(True)
@@ -28,11 +31,12 @@ def main():
     plt.xlabel("Value")
     plt.ylabel("Approximation Accuracy")
     plt.minorticks_on()
-    # plt.ion()
+    if settings['interactive']:
+        plt.ion()
     if settings['log_y']:
         plt.yscale('log')
     
-    
+    print('Plot configured')
     plt.savefig(fp+filename+'.png')
     print('Plot saved\n')
     print('Range: ', f'[{xmin}, {xmax}]')
