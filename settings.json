@@ -1,0 +1,10 @@
+{
+    "xmin": 1,
+    "xmax": 10000000,
+    "filter": "negative",
+    "plot_name": "pi_1b",
+    "path": "D:\\Users\\ender\\OneDrive\\Documents\\Coding Workspaces\\Python Workspace\\pi\\pi-approximations\\",
+    "data_name": "1b_raw",
+    "log_y": true,
+    "interactive": false
+}
